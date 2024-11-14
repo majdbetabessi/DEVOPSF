@@ -57,6 +57,7 @@ class EtudiantServiceImplDiffblueTest {
         verify(etudiantRepository).findAll();
         assertTrue(actualRetrieveAllEtudiantsResult.isEmpty());
     }
+    /**/
 
     /**
      * Test {@link EtudiantServiceImpl#retrieveEtudiant(Long)}.
