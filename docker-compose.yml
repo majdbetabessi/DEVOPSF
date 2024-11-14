@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Service pour l'application Spring Boot
+  app:
+    image: yasminwardi/alpine # Nom de l'image Docker de votre application
+    build:
+      context: .
+    ports:
+      - "8081:8081" # L'application écoute sur le port 8081
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: true
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL5InnoDBDialect
+      SERVER_PORT: 8081
+      SERVER_SERVLET_CONTEXT_PATH: /tpfoyer
+    depends_on:
+      - db
+    networks:
+      - devops-network
+
+  # Service pour la base de données MySQL
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: db
+    ports:
+      - "3306:3306"
+    networks:
+      - devops-network
+
+networks:
+  devops-network:
+    driver: bridge
