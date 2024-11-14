@@ -31,7 +31,7 @@ import tn.esprit.tpfoyer.repository.BlocRepository;
 @ContextConfiguration(classes = {BlocServiceImpl.class})
 @ExtendWith(SpringExtension.class)
 @DisabledInAotMode
-class BlocServiceImplDiffblueTest {
+class BlocServiceImplTest {
     @MockBean
     private BlocRepository blocRepository;
 
