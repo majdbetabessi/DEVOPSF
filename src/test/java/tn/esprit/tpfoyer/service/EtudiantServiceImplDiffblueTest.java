@@ -58,7 +58,7 @@ class EtudiantServiceImplDiffblueTest {
         assertTrue(actualRetrieveAllEtudiantsResult.isEmpty());
     }
     /**/
-
+/*                      test                             */
     /**
      * Test {@link EtudiantServiceImpl#retrieveEtudiant(Long)}.
      * <ul>
@@ -67,7 +67,7 @@ class EtudiantServiceImplDiffblueTest {
      * </ul>
      * <p>
      * Method under test: {@link EtudiantServiceImpl#retrieveEtudiant(Long)}
-     *//**/
+     */
     @Test
     @DisplayName("Test retrieveEtudiant(Long); given Etudiant() CinEtudiant is one; then return Etudiant()")
     void testRetrieveEtudiant_givenEtudiantCinEtudiantIsOne_thenReturnEtudiant() {
