@@ -1,14 +1,26 @@
-# Utiliser une image Java pour exécuter l'application
-FROM openjdk:17-jdk-slim
+# Use a base image with Maven and JDK pre-installed for Java projects
+FROM maven:3.8.6-eclipse-temurin-17 as build
 
-# Définir le répertoire de travail dans le conteneur
+# Set the working directory in the container
 WORKDIR /app
 
-# Copier le fichier JAR de l'application dans le conteneur
-COPY target/*.jar app.jar
+# Copy the entire project into the working directory
+COPY . .
 
-# Exposer le port 8081 pour correspondre à la configuration de `server.port`
+# Build the project using Maven
+RUN mvn clean package
+
+# Define the base runtime image with a JDK
+FROM eclipse-temurin:17-jdk-alpine
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the compiled files from the build stage
+COPY --from=build /app /app
+
+# Expose the application port (8081 as per your configuration)
 EXPOSE 8081
 
-# Commande pour exécuter l'application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Define the default command to run the application
+CMD ["java", "-jar", "target/tpfoyer.jar"]
