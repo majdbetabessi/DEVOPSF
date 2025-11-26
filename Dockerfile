@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk
+FROM openjdk:17-slim
 
 ADD target/tp-foyer-5.0.0.jar tp-foyer-5.0.0.jar
 
