@@ -1,4 +1,4 @@
-FROM openjdk:17-oracle
+FROM openjdk:17-jdk-slim
 
 ADD target/tp-foyer-5.0.0.jar tp-foyer-5.0.0.jar
 
