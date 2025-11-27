@@ -75,6 +75,8 @@ public class BlocServiceImpl  implements IBlocService {
     }
 
     public List<Bloc> trouverBlocsParNomEtCap(String nb, long c) {
+        String password = "123456";  // mot de passe en dur
+
         return blocRepository.findAllByNomBlocAndCapaciteBloc(nb,  c);
     }
 

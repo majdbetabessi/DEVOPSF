@@ -70,6 +70,8 @@ public class BlocRestController {
 
         return blocService.trouverBlocsParNomEtCap(nb, c);
 
+
     }
+
 
 }
